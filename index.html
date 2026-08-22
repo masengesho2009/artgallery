@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A personal gallery of drawings and works on paper.">
+    <title>Lines by Nia — Drawing Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top">Lines <em>by</em> Nia</a>
+      <button class="menu-button" aria-label="Open navigation" aria-expanded="false">Menu</button>
+      <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+    </header>
+    <main id="top">
+      <section class="hero">
+        <p class="eyebrow">Selected drawings · 2024—2026</p>
+        <h1>Small worlds<br>made by <em>hand.</em></h1>
+        <div class="hero-bottom"><p>Sketches, ink studies, and quiet observations from my notebook.</p><a class="round-link" href="#work" aria-label="See selected work">↓</a></div>
+      </section>
+      <section class="gallery" id="work" aria-labelledby="work-heading">
+        <div class="section-heading"><p class="eyebrow">01 / Gallery</p><h2 id="work-heading">Selected work</h2><p>Click a drawing to take a closer look.</p></div>
+        <div class="art-grid">
+          <button class="art-card art-one" data-title="Blue Hour" data-medium="Ink and coloured pencil · 2025"><span class="artwork"><i></i><b></b><strong></strong></span><span class="art-caption">Blue Hour <small>01</small></span></button>
+          <button class="art-card art-two" data-title="Where the Garden Ends" data-medium="Graphite on paper · 2026"><span class="artwork"><i></i><b></b><strong></strong></span><span class="art-caption">Where the Garden Ends <small>02</small></span></button>
+          <button class="art-card art-three" data-title="Afternoon Table" data-medium="Pastel and ink · 2025"><span class="artwork"><i></i><b></b><strong></strong></span><span class="art-caption">Afternoon Table <small>03</small></span></button>
+          <button class="art-card art-four" data-title="A Place to Rest" data-medium="Charcoal on paper · 2024"><span class="artwork"><i></i><b></b><strong></strong></span><span class="art-caption">A Place to Rest <small>04</small></span></button>
+          <button class="art-card art-five" data-title="Sunlit Room" data-medium="Watercolour and pencil · 2026"><span class="artwork"><i></i><b></b><strong></strong></span><span class="art-caption">Sunlit Room <small>05</small></span></button>
+        </div>
+      </section>
+      <section class="about" id="about"><p class="eyebrow">02 / About</p><div><h2>I draw the things that make me pause.</h2><p>I’m Nia, an artist working mainly with pencil, ink, and whatever colour is close by. This is a growing archive of the everyday details I want to keep.</p><a class="text-link" href="mailto:hello@example.com">More about me <span>↗</span></a></div></section>
+    </main>
+    <footer id="contact"><p class="eyebrow">03 / Keep in touch</p><a class="email" href="mailto:hello@example.com">hello@example.com</a><div class="footer-bottom"><span>© 2026 Lines by Nia</span><a href="#top">Back to top ↑</a></div></footer>
+    <dialog class="lightbox"><button class="close" aria-label="Close artwork view">×</button><div class="lightbox-art"></div><div><p class="eyebrow">Selected work</p><h2></h2><p class="medium"></p></div></dialog>
+    <script src="script.js"></script>
+  </body>
+</html>
+
