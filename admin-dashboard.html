@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Studio Masengesho administrator area.">
+  <meta name="theme-color" content="#f6f1e8">
+  <title>Studio Dashboard — Studio Masengesho</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin-login.css">
+  <style>
+    .dashboard-wrap{min-height:calc(100vh - 86px);display:grid;place-items:center;padding:48px 7vw}
+    .dashboard-card{width:min(100%,650px);background:rgba(255,255,255,.42);border:1px solid var(--line);padding:clamp(28px,6vw,58px)}
+    .dashboard-card h1{font:clamp(2.5rem,6vw,4.5rem)/1.05 "Playfair Display",serif;margin:20px 0}
+    .dashboard-card h1 em{color:var(--rose)}
+    .dashboard-card p{color:var(--muted);line-height:1.7}
+    .dashboard-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+    .dashboard-actions a,.dashboard-actions button{min-height:48px;padding:0 18px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--ink);background:var(--ink);color:var(--paper);font: .68rem "DM Mono",monospace;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+    .dashboard-actions a{background:transparent;color:var(--ink)}
+    #dashboard-message{font-size:.8rem}
+  </style>
+</head>
+<body>
+  <header class="login-header">
+    <a class="brand" href="index.html">Studio <em>Masengesho</em></a>
+    <a class="back-link" href="index.html">← View gallery</a>
+  </header>
+  <main class="dashboard-wrap">
+    <section class="dashboard-card">
+      <p class="eyebrow">PRIVATE STUDIO · ADMIN AREA</p>
+      <h1>Welcome to your<br><em>studio.</em></h1>
+      <p>You are signed in. This is the starting point for managing artwork and gallery content. We will connect the artwork tools after setting up database permissions.</p>
+      <p id="dashboard-message" role="status" aria-live="polite">Checking your session…</p>
+      <div class="dashboard-actions">
+        <a href="index.html">Open public gallery</a>
+        <button id="sign-out" type="button">Sign out ↗</button>
+      </div>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script>
+    const message = document.querySelector('#dashboard-message');
+    const signOutButton = document.querySelector('#sign-out');
+
+    async function checkSession() {
+      const { data, error } = await window.studioSupabase.auth.getSession();
+      if (error || !data.session) {
+        window.location.replace('admin-login.html');
+        return;
+      }
+      message.textContent = 'Signed in as ' + data.session.user.email + '.';
+    }
+
+    signOutButton.addEventListener('click', async () => {
+      signOutButton.disabled = true;
+      const { error } = await window.studioSupabase.auth.signOut();
+      if (error) {
+        message.textContent = 'Sign out failed. Please try again.';
+        signOutButton.disabled = false;
+        return;
+      }
+      window.location.replace('admin-login.html');
+    });
+
+    checkSession();
+  </script>
+</body>
+</html>
